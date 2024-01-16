@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+
+import 'package:bookly/core/utils/assets_data.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:svg_flutter/svg.dart';
-
-import '../../../../../core/utils/assets/assets_data.dart';
 
 class CustomHomeAppBar extends StatelessWidget {
   const CustomHomeAppBar({super.key});
