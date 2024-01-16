@@ -3,7 +3,6 @@ import 'package:bookly/core/utils/assets_data.dart';
 import 'package:bookly/features/splash/presentation/views/widgets/sliding_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:svg_flutter/svg.dart';
 
 import '../../../../home/presentation/views/home_view.dart';
 
@@ -40,7 +39,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        SvgPicture.asset(
+        Image.asset(
           AssetsData.logo,
           width: size.width * 0.65
         ),

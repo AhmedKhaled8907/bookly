@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:bookly/core/utils/assets_data.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:svg_flutter/svg.dart';
 
 class CustomHomeAppBar extends StatelessWidget {
   const CustomHomeAppBar({super.key});
@@ -14,7 +13,7 @@ class CustomHomeAppBar extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        SvgPicture.asset(
+        Image.asset(
           AssetsData.logo,
           width: size.width * 0.2,
         ),
