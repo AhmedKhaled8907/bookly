@@ -24,14 +24,14 @@ class HomeViewBody extends StatelessWidget {
                   'Featured Books',
                   style: Styles.textStyle24,
                 ),
-                SizedBox(height: 20),
+                SizedBox(height: 30),
                 FeaturedBooksListView(),
                 SizedBox(height: 45),
                 Text(
                   'Best Seller Books',
                   style: Styles.textStyle24,
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 20),
               ],
             ),
           ),
@@ -43,5 +43,3 @@ class HomeViewBody extends StatelessWidget {
     );
   }
 }
-
-
