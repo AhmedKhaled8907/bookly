@@ -25,6 +25,7 @@ class CustomHomeAppBar extends StatelessWidget {
           },
           icon: const Icon(
             FontAwesomeIcons.magnifyingGlass,
+            size: 22,
           ),
         )
       ],
