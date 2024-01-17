@@ -1,10 +1,12 @@
 import 'package:bookly/core/utils/styles.dart';
-import 'package:bookly/core/widgets/custom_button.dart';
-import 'package:bookly/features/home/presentation/views/widgets/book_rating.dart';
-import 'package:bookly/features/home/presentation/views/widgets/custom_book_image.dart';
+
 import 'package:flutter/material.dart';
 
+import 'book_action.dart';
+import 'book_rating.dart';
 import 'custom_book_details_app_bar.dart';
+import 'custom_book_image.dart';
+import 'similar_books_list_view.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
   const BookDetailsViewBody({super.key});
@@ -12,97 +14,80 @@ class BookDetailsViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          // the app bar
-          const CustomBookDetailsAppBar(),
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 30),
+        child: Column(
+          children: [
+            // the app bar
+            const CustomBookDetailsAppBar(),
 
-          const SizedBox(height: 36),
+            const SizedBox(height: 16),
 
-          // the image
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: width * 0.17),
-            child: const CustomBookImage(),
-          ),
+            // the image
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: width * 0.17),
+              child: const CustomBookImage(),
+            ),
 
-          const SizedBox(height: 40),
+            const SizedBox(height: 28),
 
-          // the title
-          const Text(
-            'The Jungle Book',
-            textAlign: TextAlign.center,
-            style: Styles.textStyle30,
-          ),
-
-          const SizedBox(height: 4),
-
-          // the author
-          Opacity(
-            opacity: 0.7,
-            child: Text(
-              'Rudyard Kipling',
+            // the title
+            const Text(
+              'The Jungle Book',
               textAlign: TextAlign.center,
-              style: Styles.textStyle18.copyWith(
-                fontStyle: FontStyle.italic,
+              style: Styles.textStyle30,
+            ),
+
+            const SizedBox(height: 4),
+
+            // the author
+            Opacity(
+              opacity: 0.7,
+              child: Text(
+                'Rudyard Kipling',
+                textAlign: TextAlign.center,
+                style: Styles.textStyle18.copyWith(
+                  fontStyle: FontStyle.italic,
+                ),
               ),
             ),
-          ),
 
-          const SizedBox(height: 14),
+            const SizedBox(height: 14),
 
-          // the rating
-          const BookRating(),
+            // the rating
+            const BookRating(),
 
-          const SizedBox(height: 36),
+            const SizedBox(height: 36),
 
-          // the buttons
-          const BookAction(),
-        ],
+            // the buttons
+            const BookAction(),
+
+            const SizedBox(height: 36),
+
+            // you can also like text
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'You can also like',
+                textAlign: TextAlign.start,
+                style: Styles.textStyle20.copyWith(
+                  fontWeight: FontWeight.w900,
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 16),
+
+            // Similar Books ListView
+            const SimilarBooksListView(),
+
+            const SizedBox(height: 36),
+          ],
+        ),
       ),
     );
   }
 }
 
-class BookAction extends StatelessWidget {
-  const BookAction({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 8),
-      child: Row(
-        children: [
-          // the price button
-          Expanded(
-            child: CustomButton(
-              text: '19.99€',
-              fontSize: 20,
-              backgroundColor: Colors.white,
-              textColor: Colors.black,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(16),
-                bottomLeft: Radius.circular(16),
-              ),
-            ),
-          ),
-
-          // free preview button
-          Expanded(
-            child: CustomButton(
-              text: 'Free preview',
-              backgroundColor: Color(0xffEF8262),
-              textColor: Colors.white,
-              borderRadius: BorderRadius.only(
-                topRight: Radius.circular(16),
-                bottomRight: Radius.circular(16),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
