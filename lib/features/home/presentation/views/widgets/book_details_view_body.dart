@@ -14,80 +14,85 @@ class BookDetailsViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30),
-        child: Column(
-          children: [
-            // the app bar
-            const CustomBookDetailsAppBar(),
+    return CustomScrollView(
+      slivers: [
+        SliverFillRemaining(
+          hasScrollBody: false,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
+            child: Column(
+              children: [
+                // the app bar
+                const CustomBookDetailsAppBar(),
 
-            const SizedBox(height: 16),
+                const SizedBox(height: 16),
 
-            // the image
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: width * 0.17),
-              child: const CustomBookImage(),
-            ),
-
-            const SizedBox(height: 28),
-
-            // the title
-            const Text(
-              'The Jungle Book',
-              textAlign: TextAlign.center,
-              style: Styles.textStyle30,
-            ),
-
-            const SizedBox(height: 4),
-
-            // the author
-            Opacity(
-              opacity: 0.7,
-              child: Text(
-                'Rudyard Kipling',
-                textAlign: TextAlign.center,
-                style: Styles.textStyle18.copyWith(
-                  fontStyle: FontStyle.italic,
+                // the image
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: width * 0.17),
+                  child: const CustomBookImage(),
                 ),
-              ),
-            ),
 
-            const SizedBox(height: 14),
+                const SizedBox(height: 28),
 
-            // the rating
-            const BookRating(),
-
-            const SizedBox(height: 36),
-
-            // the buttons
-            const BookAction(),
-
-            const SizedBox(height: 36),
-
-            // you can also like text
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'You can also like',
-                textAlign: TextAlign.start,
-                style: Styles.textStyle20.copyWith(
-                  fontWeight: FontWeight.w900,
+                // the title
+                const Text(
+                  'The Jungle Book',
+                  textAlign: TextAlign.center,
+                  style: Styles.textStyle30,
                 ),
-              ),
+
+                const SizedBox(height: 4),
+
+                // the author
+                Opacity(
+                  opacity: 0.7,
+                  child: Text(
+                    'Rudyard Kipling',
+                    textAlign: TextAlign.center,
+                    style: Styles.textStyle18.copyWith(
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 14),
+
+                // the rating
+                const BookRating(),
+
+                const SizedBox(height: 36),
+
+                // the buttons
+                const BookAction(),
+
+                const Expanded(
+                  child: SizedBox(height: 50),
+                ),
+
+                // you can also like text
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'You can also like',
+                    textAlign: TextAlign.start,
+                    style: Styles.textStyle20.copyWith(
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 16),
+
+                // Similar Books ListView
+                const SimilarBooksListView(),
+
+                const SizedBox(height: 40),
+              ],
             ),
-
-            const SizedBox(height: 16),
-
-            // Similar Books ListView
-            const SimilarBooksListView(),
-
-            const SizedBox(height: 36),
-          ],
+          ),
         ),
-      ),
+      ],
     );
   }
 }
-
-
