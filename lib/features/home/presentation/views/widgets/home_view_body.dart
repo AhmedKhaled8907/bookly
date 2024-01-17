@@ -20,7 +20,7 @@ class HomeViewBody extends StatelessWidget {
           SizedBox(height: 45),
           Text(
             'Best Seller',
-            style: Styles.titleMedium,
+            style: Styles.textStyle18,
           ),
           SizedBox(height: 20),
           BestSellerListViewItem(),
@@ -44,7 +44,6 @@ class BestSellerListViewItem extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
-                // color: Colors.grey[700],
               ),
               child: Image.asset(
                 AssetsData.testBookImage,
@@ -52,11 +51,31 @@ class BestSellerListViewItem extends StatelessWidget {
               ),
             ),
           ),
-          const Column(
-            children: [],
+          const SizedBox(width: 30),
+          Column(
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.5,
+                child: const Text(
+                  'Harry Potter and the Goblet of Fire',
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: Styles.textStyle20,
+                ),
+              ),
+            ],
           )
         ],
       ),
     );
+  }
+}
+
+class BestSellerListView extends StatelessWidget {
+  const BestSellerListView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
