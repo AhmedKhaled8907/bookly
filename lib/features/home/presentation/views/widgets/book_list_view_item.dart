@@ -1,13 +1,15 @@
 import 'package:bookly/core/utils/app_router.dart';
-import 'package:bookly/core/utils/assets_data.dart';
 import 'package:bookly/core/utils/styles.dart';
+import 'package:bookly/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly/features/home/presentation/views/widgets/book_rating.dart';
+import 'package:bookly/features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class BookListViewItem extends StatelessWidget {
-  const BookListViewItem({super.key});
+  const BookListViewItem({super.key, required this.book});
 
+  final BookModel book;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -19,55 +21,47 @@ class BookListViewItem extends StatelessWidget {
         child: Row(
           children: [
             // the image
-            AspectRatio(
-              aspectRatio: 2.7 / 4,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: Image.asset(
-                  AssetsData.testBookImage,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
+            CustomBookImage(imageUrl: book.volumeInfo.imageLinks.thumbnail),
             const SizedBox(width: 30),
             Expanded(
               child: SizedBox(
                 width: MediaQuery.of(context).size.width * 0.5,
-                child: const Column(
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // the title
                     Text(
-                      'Harry Potter and the Goblet of Fire',
+                      book.volumeInfo.title!,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: Styles.textStyle20,
                     ),
 
-                    SizedBox(height: 3),
+                    const SizedBox(height: 3),
 
                     // the author's name
                     Opacity(
                       opacity: 0.7,
                       child: Text(
-                        'J.K. Rowling',
+                        book.volumeInfo.authors!.first,
                         style: Styles.textStyle14,
                       ),
                     ),
 
-                    SizedBox(height: 3),
+                    const SizedBox(height: 3),
 
                     // the price and book rating
                     Row(
                       children: [
-                        Text(
-                          '19.99 €',
+                        const Text(
+                          'Free',
                           style: Styles.textStyle20,
                         ),
-                        Spacer(),
-                        BookRating(),
+                        const Spacer(),
+                        BookRating(
+                          rating: book.volumeInfo.averageRating ?? 0,
+                          count: book.volumeInfo.ratingsCount ?? 0,
+                        ),
                       ],
                     ),
                   ],
