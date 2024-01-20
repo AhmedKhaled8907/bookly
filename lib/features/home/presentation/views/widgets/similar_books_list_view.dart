@@ -16,7 +16,10 @@ class SimilarBooksListView extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return const Padding(
             padding: EdgeInsets.only(right: 10),
-            child: CustomBookImage(),
+            child: CustomBookImage(
+              imageUrl:
+                  'https://fifpro.org/media/fhmfhvkx/messi-world-cup.jpg?rxy=0.48356841796117644,0.31512414378031967&width=1000&height=640&rnd=133210253587130000',
+            ),
           );
         },
       ),

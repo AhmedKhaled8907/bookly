@@ -19,9 +19,9 @@ class FeaturedBooksListView extends StatelessWidget {
           return SizedBox(
             height: MediaQuery.of(context).size.height * 0.25,
             child: ListView.builder(
-              padding: EdgeInsets.zero,
-              itemCount: 10,
               scrollDirection: Axis.horizontal,
+              physics: const BouncingScrollPhysics(),
+              itemCount: state.books.length,
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
                   padding: const EdgeInsets.only(right: 16),
@@ -31,7 +31,10 @@ class FeaturedBooksListView extends StatelessWidget {
                         AppRouter.kBookDetailsView,
                       );
                     },
-                    child: const CustomBookImage(),
+                    child: CustomBookImage(
+                      imageUrl:
+                          state.books[index].volumeInfo.imageLinks.thumbnail,
+                    ),
                   ),
                 );
               },
@@ -46,5 +49,3 @@ class FeaturedBooksListView extends StatelessWidget {
     );
   }
 }
-
-
