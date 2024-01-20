@@ -12,11 +12,10 @@ class HomeRepoImpl extends HomeRepo {
 
   final ApiService apiService;
 
-
   @override
-  Future<Either<Failure, List<BookModel>>> fetchNewestBooks() async {
-    const String endPoint =
-        'volumes?Filtering=free-ebooks&q=subject:programming&Sorting=newest';
+  @override
+  Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
+    const String endPoint = 'volumes?Filtering=free-ebooks&q=subject:anime';
 
     try {
       final data = await apiService.get(endPoint: endPoint);
@@ -37,9 +36,9 @@ class HomeRepoImpl extends HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
+  Future<Either<Failure, List<BookModel>>> fetchNewestBooks() async {
     const String endPoint =
-        'volumes?Filtering=free-ebooks&q=subject:programming';
+        'volumes?Filtering=free-ebooks&q=subject:soccer&Sorting=newest';
 
     try {
       final data = await apiService.get(endPoint: endPoint);
