@@ -12,34 +12,50 @@ class HomeRepoImpl extends HomeRepo {
   HomeRepoImpl(this.apiService);
 
   final ApiService apiService;
-  
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchNewestBooks()async {
-  
-    const String endPoint = 'volumes?Filtering=free-ebooks&q=subject: programming&Sorting=newest ';
+  Future<Either<Failure, List<BookModel>>> fetchNewestBooks() async {
+    const String endPoint =
+        'volumes?Filtering=free-ebooks&q=subject: programming&Sorting=newest ';
 
     try {
-  final data = await apiService.get(endPoint: endPoint);
+      final data = await apiService.get(endPoint: endPoint);
 
-  List<BookModel> books =[];
-  for (var item in data['items']) {
-    books.add(BookModel.fromJson(item));
-  }
+      List<BookModel> books = [];
+      for (var item in data['items']) {
+        books.add(BookModel.fromJson(item));
+      }
 
-  return right(books);
-} catch (e) {
-  if (e is DioException) {
-  return left(ServerFailure.fromDiaError(e));
-  }
+      return right(books);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDiaError(e));
+      }
 
-  return left(ServerFailure(e.toString()));
-}
-    
+      return left(ServerFailure(e.toString()));
+    }
   }
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() {
-    ApiService
+  Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
+    const String endPoint =
+        'volumes?Filtering=free-ebooks&q=subject: programming';
+
+    try {
+      final data = await apiService.get(endPoint: endPoint);
+
+      List<BookModel> books = [];
+      for (var item in data['items']) {
+        books.add(BookModel.fromJson(item));
+      }
+
+      return right(books);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDiaError(e));
+      }
+
+      return left(ServerFailure(e.toString()));
+    }
   }
 }
