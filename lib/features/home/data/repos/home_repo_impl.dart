@@ -4,6 +4,7 @@ import 'package:bookly/core/utils/api_service.dart';
 import 'package:bookly/features/home/data/models/book_model/book_model.dart';
 
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 
 import 'home_repo.dart';
 
@@ -14,7 +15,7 @@ class HomeRepoImpl extends HomeRepo {
   
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchBestSellerBooks()async {
+  Future<Either<Failure, List<BookModel>>> fetchNewestBooks()async {
   
     const String endPoint = 'volumes?Filtering=free-ebooks&q=subject: programming&Sorting=newest ';
 
@@ -28,7 +29,11 @@ class HomeRepoImpl extends HomeRepo {
 
   return right(books);
 } catch (e) {
-  return left(ServerFailure());
+  if (e is DioException) {
+  return left(ServerFailure.fromDiaError(e));
+  }
+
+  return left(ServerFailure(e.toString()));
 }
     
   }
