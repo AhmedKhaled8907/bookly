@@ -4,7 +4,6 @@ import 'package:bookly/core/utils/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../../constants.dart';
 import '../../../../../core/utils/styles.dart';
 import 'book_rating.dart';
 
@@ -40,9 +39,7 @@ class BookListViewItem extends StatelessWidget {
                       bookModel.volumeInfo.title!,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      style: Styles.textStyle20.copyWith(
-                        fontFamily: kGtSectraFine,
-                      ),
+                      style: Styles.textStyle20.copyWith(),
                     ),
                   ),
                   const SizedBox(
@@ -50,7 +47,9 @@ class BookListViewItem extends StatelessWidget {
                   ),
                   Text(
                     bookModel.volumeInfo.authors![0],
-                    style: Styles.textStyle14,
+                    style: Styles.textStyle14.copyWith(
+                      fontStyle: FontStyle.italic,
+                    ),
                   ),
                   const SizedBox(
                     height: 3,

@@ -1,6 +1,6 @@
+import 'package:bookly/Features/home/presentation/views/widgets/newest_books_list_view.dart';
 import 'package:bookly/core/utils/styles.dart';
 import 'package:flutter/material.dart';
-import 'best_seller_list_view.dart';
 import 'custom_app_bar.dart';
 import 'featured_list_view.dart';
 
@@ -9,42 +9,38 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CustomScrollView(
-      physics: BouncingScrollPhysics(),
-      slivers: [
-        SliverToBoxAdapter(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 30,
-                  ),
-                  child: CustomAppBar()),
-              FeaturedBooksListView(),
-              SizedBox(
-                height: 50,
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30),
-                child: Text(
-                  'Newset Books',
-                  style: Styles.textStyle18,
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 30),
+      child: CustomScrollView(
+        physics: BouncingScrollPhysics(),
+        slivers: [
+          SliverToBoxAdapter(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CustomAppBar(),
+                Text(
+                  'Featured Books',
+                  style: Styles.textStyle24,
                 ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-            ],
+                SizedBox(height: 20),
+                FeaturedBooksListView(),
+                SizedBox(
+                  height: 50,
+                ),
+                Text(
+                  'Newset Books',
+                  style: Styles.textStyle24,
+                ),
+                SizedBox(height: 20),
+              ],
+            ),
           ),
-        ),
-        SliverFillRemaining(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30),
-            child: BestSellerListView(),
+          SliverFillRemaining(
+            child: NewestBooksListView(),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
