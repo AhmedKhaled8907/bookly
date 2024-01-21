@@ -6,7 +6,7 @@ abstract class Failure {
   const Failure(this.errMessage);
 }
 
-final class ServerFailure extends Failure {
+class ServerFailure extends Failure {
   ServerFailure(super.errMessage);
 
   factory ServerFailure.fromDiaError(DioException dioException) {
