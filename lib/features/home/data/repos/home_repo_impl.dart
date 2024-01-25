@@ -13,7 +13,6 @@ class HomeRepoImpl extends HomeRepo {
   final ApiService apiService;
 
   @override
-  @override
   Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
     const String endPoint = 'volumes?Filtering=free-ebooks&q=subject:anime';
 
