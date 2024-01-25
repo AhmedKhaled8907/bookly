@@ -4,7 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
 import '../../../../core/errors/failures.dart';
-import '../models/book_model/book_model.dart';
+import '../../../../core/utils/models/book_model/book_model.dart';
 import 'home_repo.dart';
 
 class HomeRepoImpl extends HomeRepo {
