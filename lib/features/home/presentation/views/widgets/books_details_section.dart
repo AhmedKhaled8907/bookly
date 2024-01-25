@@ -32,9 +32,7 @@ class BookDetailsSection extends StatelessWidget {
           ),
           textAlign: TextAlign.center,
         ),
-        const SizedBox(
-          height: 6,
-        ),
+        const SizedBox(height: 6),
         Opacity(
           opacity: .7,
           child: Text(
@@ -56,7 +54,7 @@ class BookDetailsSection extends StatelessWidget {
         const SizedBox(
           height: 24,
         ),
-        const BooksAction(),
+        BooksAction(bookModel: bookmodel),
       ],
     );
   }
